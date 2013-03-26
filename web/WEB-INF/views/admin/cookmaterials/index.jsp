@@ -32,7 +32,7 @@
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${cookMaterials.content}" var="cookbook">
+            <c:forEach items="${cookMaterials.content}" var="cookMaterial">
                 <tr>
                     <td><a href="${ctx}/admin/cookMaterials/update/${cookMaterial.id}">${cookMaterial.name}</a></td>
                     <td>${cookMaterial.createdAt}</td>

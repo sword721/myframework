@@ -32,7 +32,7 @@ public class CookMaterial extends IdEntity {
     private Double materialNumber;
 
     /** 报警数量 */
-    private int warnNumber;
+    private Integer warnNumber;
 
     /** 计价单位 */
     private String materialUnit;
@@ -41,7 +41,7 @@ public class CookMaterial extends IdEntity {
     private Double marketPrice;
 
     /** 品牌ID */
-    private int brandId;
+    private Integer brandId;
 
     /** 创建时间 */
     private Date createdAt;
@@ -89,11 +89,11 @@ public class CookMaterial extends IdEntity {
         this.materialNumber = materialNumber;
     }
 
-    public int getWarnNumber() {
+    public Integer getWarnNumber() {
         return warnNumber;
     }
 
-    public void setWarnNumber(int warnNumber) {
+    public void setWarnNumber(Integer warnNumber) {
         this.warnNumber = warnNumber;
     }
 
@@ -113,11 +113,11 @@ public class CookMaterial extends IdEntity {
         this.marketPrice = marketPrice;
     }
 
-    public int getBrandId() {
+    public Integer getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(int brandId) {
+    public void setBrandId(Integer brandId) {
         this.brandId = brandId;
     }
 

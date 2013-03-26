@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
@@ -36,6 +38,7 @@ public class CookMaterialAdminController {
     private static final int PAGE_SIZE = 20;
 
     private static Map<String, String> sortTypes = Maps.newLinkedHashMap();
+
     static {
         sortTypes.put("auto", "自动");
         sortTypes.put("name", "名称");
@@ -43,6 +46,7 @@ public class CookMaterialAdminController {
 
     /**
      * 进入食材管理的页面
+     *
      * @param sortType
      * @param pageNumber
      * @param model
@@ -66,6 +70,7 @@ public class CookMaterialAdminController {
 
     /**
      * 进入新增食材的页面
+     *
      * @return
      */
     @RequestMapping(value = "/admin/cookmaterials/new", method = RequestMethod.GET)
@@ -74,7 +79,22 @@ public class CookMaterialAdminController {
     }
 
     /**
+     * 保存新增的食材信息
+     *
+     * @return
+     */
+    @RequestMapping(value = "/admin/cookmaterials/create", method = RequestMethod.POST)
+    public String createCookMaterial(@Valid CookMaterial newCookMaterial, MultipartHttpServletRequest request,
+                                     RedirectAttributes redirectAttributes) {
+        newCookMaterial.setCreatedAt(dateProvider.getDate());
+        cookMaterialService.saveCookMaterial(newCookMaterial);
+        redirectAttributes.addFlashAttribute("message", "创建食材成功");
+        return "redirect:/admin/cookmaterials";
+    }
+
+    /**
      * 进入编辑食材的页面
+     *
      * @return
      */
     @RequestMapping(value = "/admin/cookmaterials/update/{id}", method = RequestMethod.GET)
@@ -87,6 +107,7 @@ public class CookMaterialAdminController {
 
     /**
      * 保存更新食材信息
+     *
      * @return
      */
     @RequestMapping(value = "/admin/cookmaterials/update", method = RequestMethod.POST)

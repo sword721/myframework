@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<form action="${ctx}/admin/cookmaterials/update" method="post">
+<form action="${ctx}/admin/cookmaterials/create" method="post" enctype="multipart/form-data" class="form-horizontal">
     <fieldset>
         <legend><small>新增食材</small></legend>
         <div class="control-group">
